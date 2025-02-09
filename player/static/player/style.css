@@ -1,0 +1,91 @@
+/* Fondo oscuro y estilo general */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #121212;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor del reproductor */
+.container {
+    width: 320px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #ddd;
+}
+
+/* Imagen cuadrada */
+#cover {
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/* Reproductor de audio */
+audio {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Botones redondos */
+button {
+    background: #4f71a1;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover */
+button:hover {
+    background: #6e90c6;
+    transform: scale(1.1);
+}
+
+/* Iconos */
+button span {
+    font-size: 20px;
+    font-weight: bold;
+}
