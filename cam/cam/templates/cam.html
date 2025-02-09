@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Usar Cámara en Django</title>
+</head>
+<body>
+    <h1>Captura desde la Cámara</h1>
+    <br>
+    <video id="video" width="640" height="480" autoplay></video>
+    <br>
+    <button id="toggleCamera">Activar/Desactivar Cámara</button>
+    <br>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <br>
+    <script>
+        let video = document.getElementById('video');
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let stream = null;
+        
+        // Función para activar la cámara
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(mediaStream) {
+                    stream = mediaStream;
+                    video.srcObject = stream;
+                })
+                .catch(function(err) {
+                    console.error("Error al acceder a la cámara: ", err);
+                });
+        }
+
+        // Función para detener la cámara
+        function stopCamera() {
+            if (stream) {
+                let tracks = stream.getTracks();
+                tracks.forEach(track => track.stop()); 
+                video.srcObject = null;
+            }
+        }
+
+        // Botón para activar/desactivar la cámara
+        document.getElementById('toggleCamera').addEventListener('click', function() {
+            if (video.srcObject) {
+                stopCamera();
+            } else {
+                startCamera();
+            }
+        });
+
+        // Iniciar la cámara al cargar la página
+        startCamera();
+    </script>
+</body>
+</html>
