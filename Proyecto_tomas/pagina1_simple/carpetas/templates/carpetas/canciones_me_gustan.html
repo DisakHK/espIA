@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canciones que me gustan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        a:hover {
+            background-color: #0c47a1;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎶 Canciones que me gustan 🎶</h1>
+    <ul>
+        <li>Bohemian Rhapsody - Queen</li>
+        <li>Imagine - John Lennon</li>
+        <li>Hotel California - The Eagles</li>
+    </ul>
+    <a href="{% url 'lista_carpetas' %}">⬅ Volver a las Carpetas</a>
+</body>
+</html>
