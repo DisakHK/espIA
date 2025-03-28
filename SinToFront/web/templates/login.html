@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Conectar App</title>
+    <style>
+        body {
+            background-color: #0a1f44;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #cc5200;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conectar con un servicio de música</h1>
+    <button onclick="connectSpotify()">🎵 Conectar con Spotify</button>
+    <button onclick="connectYouTube()">🎥 Conectar con YouTube</button>
+    <script>
+        function connectSpotify() {
+            window.location.href = "https://accounts.spotify.com/authorize"; // Reemplázalo con la URL real de autenticación
+        }
+        function connectYouTube() {
+            window.location.href = "https://accounts.google.com/signin"; // Reemplázalo con la URL real de autenticación
+        }
+    </script>
+</body>
+</html>
