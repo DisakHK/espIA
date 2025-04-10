@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -123,30 +125,67 @@
             </ul>
         </div>
     </div>
+    <!-- Pega esto dentro del <body>, reemplazando tu script actual -->
+
+    <audio id="audioPlayer" src="/static/audio/cancion1.mp3"></audio>
+
     <script>
-        let video = document.getElementById('video');
-        let cameraOn = false;
-        
-        function toggleCamera() {
-            if (cameraOn) {
-                video.srcObject.getTracks().forEach(track => track.stop());
-                cameraOn = false;
-            } else {
-                navigator.mediaDevices.getUserMedia({ video: true })
-                    .then(stream => {
-                        video.srcObject = stream;
-                        cameraOn = true;
-                    })
-                    .catch(error => console.error("Error al acceder a la cámara", error));
+        const canciones = [
+            { nombre: "Canción 1", archivo: "/static/audio/cancion1.mp3" },
+            { nombre: "Canción 2", archivo: "/static/audio/cancion2.mp3" },
+            { nombre: "Canción 3", archivo: "/static/audio/cancion3.mp3" }
+        ];
+
+        let currentIndex = 0;
+        const audio = document.getElementById("audioPlayer");
+        const songList = document.getElementById("songList");
+        const progress = document.querySelector(".progress");
+
+        // Mostrar canciones en la lista
+        songList.innerHTML = "";
+        canciones.forEach((c, i) => {
+            const li = document.createElement("li");
+            li.textContent = c.nombre;
+            li.onclick = () => {
+                currentIndex = i;
+                reproducirCancion();
+            };
+            songList.appendChild(li);
+        });
+
+        function reproducirCancion() {
+            audio.src = canciones[currentIndex].archivo;
+            audio.play();
+        }
+
+        function manualPlay() {
+            if (audio.paused) {
+                audio.play();
             }
         }
-        
-        function manualPlay() { console.log("Reproducir"); }
-        function manualPause() { console.log("Pausar"); }
-        function manualNext() { console.log("Siguiente"); }
-        function manualPrev() { console.log("Anterior"); }
-        function login() {
-            window.location.href = "login.html"; }
+
+        function manualPause() {
+            if (!audio.paused) {
+                audio.pause();
+            }
+        }
+
+        function manualNext() {
+            currentIndex = (currentIndex + 1) % canciones.length;
+            reproducirCancion();
+        }
+
+        function manualPrev() {
+            currentIndex = (currentIndex - 1 + canciones.length) % canciones.length;
+            reproducirCancion();
+        }
+
+        // Barra de progreso
+        audio.ontimeupdate = () => {
+            const porcentaje = (audio.currentTime / audio.duration) * 100;
+            progress.style.width = porcentaje + "%";
+        };
     </script>
+
 </body>
 </html>
