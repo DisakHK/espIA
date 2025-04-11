@@ -125,7 +125,6 @@
             </ul>
         </div>
     </div>
-    <!-- Pega esto dentro del <body>, reemplazando tu script actual -->
 
     <audio id="audioPlayer" src="/static/audio/cancion1.mp3"></audio>
 
@@ -185,6 +184,24 @@
             const porcentaje = (audio.currentTime / audio.duration) * 100;
             progress.style.width = porcentaje + "%";
         };
+
+        let video = document.getElementById('video');
+        let cameraOn = false;
+
+        function toggleCamera() {
+            if (cameraOn) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+                cameraOn = false;
+            } else {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(stream => {
+                        video.srcObject = stream;
+                        cameraOn = true;
+                    })
+                    .catch(error => console.error("Error al acceder a la cámara", error));
+            }
+        }
+
     </script>
 
 </body>
