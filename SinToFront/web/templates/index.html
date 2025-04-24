@@ -19,6 +19,15 @@
             position: relative;
         }
 
+        /* Logo */
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 150px; /* Ajusta el tamaño según sea necesario */
+            height: auto;
+        }
+
         .container {
             display: flex;
             width: 80%;
@@ -47,7 +56,6 @@
             height: 100%;
             object-fit: cover;
             transform: scaleX(-1); /* Esto crea el efecto espejo (mirror) */
-
         }
 
         button {
@@ -127,6 +135,9 @@
 </head>
 
 <body>
+    <!-- Logo -->
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+
     <button class="login-button" onclick="login()">Login / Conectar App</button>
 
     <div class="container">
@@ -200,7 +211,6 @@
                 playButton.textContent = "▶";
             }
         }
-
 
         function manualNext() {
             currentIndex = (currentIndex + 1) % canciones.length;
