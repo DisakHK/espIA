@@ -137,9 +137,9 @@
 <body>
     <!-- Logo -->
     <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
-
-    <button class="login-button" onclick="login()">Login / Conectar App</button>
-
+    <a href="/login">
+        <button class="login-button">Login / Conectar App</button>
+    </a>
     <div class="container">
         <div class="column">
             <h2>Cámara</h2>
@@ -243,10 +243,6 @@
                     })
                     .catch(error => console.error("Error al acceder a la cámara", error));
             }
-        }
-
-        function login() {
-            window.location.href = "login.html"; // Cambia esto si usas Django views
         }
     </script>
 </body>
