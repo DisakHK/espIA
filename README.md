@@ -34,33 +34,37 @@ dj-database-url
 whitenoise
 requests
 social-auth-app-django
-psycopg2-binary
+```
 
 ## Instalación local
 ### Clona el repositorio
 
-``bash
+```bash
    git clone https://github.com/DisakHK/espIA
    cd espIA
-   
+```
 ### Crea y activa un entorno virtual
 
-``bash
+```bash
    python -m venv venv
    source venv/bin/activate  # En Windows: venv\Scripts\activate
-
+```
 ### Instala los paquetes
 
-``bash
+```bash
    pip install -r requirements.txt
-
+```
 ### Migraciones y archivos estáticos
 
-``bash
+```bash
    python manage.py migrate
    python manage.py collectstatic
-
+```
 ### Ejecuta el servidor
 
-``bash
+```bash
    python manage.py runserver
+```
+
+## Creditos
+Recomendamos visitar el repositorio de https://github.com/kinivi/hand-gesture-recognition-mediapipe de donde nos basamos para entrenar y usar el modelo.
