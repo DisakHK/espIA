@@ -22,7 +22,6 @@ def detectar_gesto(request):
     try:
         data = json.loads(request.body)
         image_data = data.get("image")
-        logger.debug("Recibido POST para detectar gesto")
         if not image_data:
             return JsonResponse({"error": "No se envió imagen"}, status=400)
 
