@@ -34,7 +34,6 @@ dj-database-url
 whitenoise
 requests
 social-auth-app-django
-psycopg2-binary
 ```
 
 ## Instalación local
