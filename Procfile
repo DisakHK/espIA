@@ -1,1 +1,1 @@
-gunicorn --timeout 120 SinToFront.wsgi
+gunicorn --timeout 300 SinToFront.wsgi

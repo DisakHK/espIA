@@ -107,39 +107,26 @@ function toggleCamera() {
             .then(stream => {
                 video.srcObject = stream;
                 cameraOn = true;
+                startGestureLoop();
             })
             .catch(error => console.error("Error al acceder a la cámara", error));
     }
 }
-/*
+
 function startGestureLoop() {
+    const gestureBox = document.getElementById("gestureBox");
+
     setInterval(() => {
-        if (!cameraOn) return;
+        if (!cameraOn || video.readyState < 2) {
+            gestureBox.textContent = "Esperando cámara...";
+            return;
+        }
 
-        const context = canvas.getContext("2d");
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        const imageData = canvas.toDataURL("image/jpeg");
-
-        fetch("/detectar-gesto/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": getCSRFToken()
-            },
-            body: JSON.stringify({ image: imageData })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Gesto detectado:", data.gesto);
-            interpretarGesto(data.gesto);
-        })
-        .catch(error => console.error("Error en detección de gesto:", error));
+        gestureBox.textContent = "Analizando gesto...";
+        enviarImagen();
     }, 2000); // Cada 2 segundos
 }
-*/
+
 
 function enviarImagen() {
     const context = canvas.getContext("2d");
@@ -161,9 +148,13 @@ function enviarImagen() {
     .then(response => response.json())
     .then(data => {
         console.log("Gesto detectado:", data.gesto);
+        gestureBox.textContent = `Gesto detectado: ${data.gesto}`;
         interpretarGesto(data.gesto);
     })
-    .catch(error => console.error("Error en detección de gesto:", error));
+    .catch(error => {
+        console.error("Error en detección de gesto:", error);
+        gestureBox.textContent = "Error al detectar gesto.";
+    });
 }
 
 
